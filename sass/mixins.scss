@@ -1,0 +1,46 @@
+@mixin responsive-attribute($stack, $attribute) {
+  $last-value: null;
+
+  @each $stack-breakpoint in map-keys($stack) {
+    $value: map-get($stack, $stack-breakpoint);
+    @if ($stack-breakpoint == null or $stack-breakpoint == 0) {
+      #{$attribute}: $value;
+    } @else {
+      @include breakpoint($stack-breakpoint, $stack) {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+@mixin breakpoint($size, $stack) {
+  @if not $stack {
+    $stack: $breakpoints;
+  }
+
+  $breakpoint-found: map-has-key($stack, $size);
+
+  @if ($breakpoint-found == true) {
+    $breakpoint: map-get($stack, $size);
+    @media (min-width: #{$breakpoint}) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint size " + #{$size} + " doesn't exist.";
+  }
+}
+
+@mixin get-attribute($stack, $attribute, $break, $invert: false) {
+  $last-value: null;
+  @each $breakpoint in map-keys($stack) {
+    $current-size: map-get($stack, $breakpoint);
+    @if ($breakpoint <= $break) {
+      $last-value: map-get($stack, $breakpoint);
+    }
+  }
+
+  @if ($last-value != null) {
+    $value: if($invert, -1 * $last-value, $last-value);
+    #{$attribute}: $value;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "gooddog",
+  "version": "0.1.0",
+  "description": "A collection of handy little css and js tricks to make building frontends faster and fun. Inspired by a good dog.",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "node compileSass.js",
+    "release": "rm -rf lib/** && yarn build:sass && yarn publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcade1080/gooddog.git"
+  },
+  "keywords": [
+    "sass",
+    "css",
+    "js"
+  ],
+  "author": "Julian Scheele",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arcade1080/gooddog/issues"
+  },
+  "homepage": "https://github.com/Arcade1080/gooddog#readme",
+  "devDependencies": {
+    "node-gzip": "^1.1.2",
+    "node-sass": "^4.14.1"
+  }
+}
