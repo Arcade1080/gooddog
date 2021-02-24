@@ -1,7 +1,7 @@
 {
   "name": "gooddog",
   "version": "0.1.0",
-  "description": "A collection of handy little css and js tricks to make building frontends faster and fun. Inspired by a good dog.",
+  "description": "A collection of handy little css and js tricks to make building frontends faster and fun.",
   "main": "index.js",
   "scripts": {
     "build:sass": "node compileSass.js",
